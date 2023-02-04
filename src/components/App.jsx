@@ -1,16 +1,15 @@
+import AddUserPage from 'pages/AddUserPage/AddUserPage';
+import HomePage from 'pages/HomePage/HomePage';
+import { Routes, Route } from 'react-router-dom';
+import { Layout } from './Layout/Layout';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="add" element={<AddUserPage />} />
+      </Route>
+    </Routes>
   );
 };
