@@ -23,40 +23,42 @@ const HomePage = () => {
 
   return (
     <>
-      <table>
-        <thead>
-          <tr>
-            <th>Number</th>
-            <th>Avatar</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Status</th>
-            <th>Option</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user, idx) => (
-            <tr key={user.id}>
-              <td>{idx + 1}</td>
-              <td>
-                <Avatar name={user.name} size="40" round={true} />
-              </td>
-              <td>{user.name}</td>
-              <td>{user.age}</td>
-              <td>
-                <Status onClick={() => toggleUserStatus(user.id)}>
-                  {user.status}
-                </Status>
-              </td>
-              <td>
-                <Button type="button" onClick={() => handleDelete(user.id)}>
-                  Delete
-                </Button>
-              </td>
+      {users.length !== 0 && (
+        <table>
+          <thead>
+            <tr>
+              <th>Number</th>
+              <th>Avatar</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Status</th>
+              <th>Option</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {users.map((user, idx) => (
+              <tr key={user.id}>
+                <td>{idx + 1}</td>
+                <td>
+                  <Avatar name={user.name} size="40" round={true} />
+                </td>
+                <td>{user.name}</td>
+                <td>{user.age}</td>
+                <td>
+                  <Status onClick={() => toggleUserStatus(user.id)}>
+                    {user.status}
+                  </Status>
+                </td>
+                <td>
+                  <Button type="button" onClick={() => handleDelete(user.id)}>
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
       {isModalOpen && <Modal id={currentId} onClose={setIsModalOpen} />}
     </>
   );
