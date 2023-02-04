@@ -4,6 +4,7 @@ import Avatar from 'react-avatar';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from 'redux/users/users.selector';
 import { toggleStatus } from 'redux/users/users.slice';
+import { Button, Status } from './HomePage.styled';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -43,14 +44,14 @@ const HomePage = () => {
               <td>{user.name}</td>
               <td>{user.age}</td>
               <td>
-                <span onClick={() => toggleUserStatus(user.id)}>
+                <Status onClick={() => toggleUserStatus(user.id)}>
                   {user.status}
-                </span>
+                </Status>
               </td>
               <td>
-                <button type="button" onClick={() => handleDelete(user.id)}>
+                <Button type="button" onClick={() => handleDelete(user.id)}>
                   Delete
-                </button>
+                </Button>
               </td>
             </tr>
           ))}
